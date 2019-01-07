@@ -1,17 +1,16 @@
 NAME = fillit
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-SRC = $(wildcard *.c)
+CC = gcc -Wall -Werror -Wextra
+SRC = src/*.c
+OBJ = *.o
+INC = ./inc/
 
-all: $(NAME) 
+all: $(NAME)
 
 $(NAME):
-		$(CC) $(SRC) libft.a -o $@ $(CFLAGS)
-
+		$(CC) -I$(INC) -c $(SRC)
+		$(CC) $(OBJ) -o $(NAME)
 clean:
-		/bin/rm -rf $(OBJ)
-
+		rm -f $(OBJ)
 fclean: clean
-		/bin/rm -rf $(NAME)
-
+		rm -f $(NAME)
 re: fclean all
